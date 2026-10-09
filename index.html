@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Колесо фортуны</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Колесо фортуны</h1>
+
+  <main class="layout">
+    <!-- Колесо -->
+    <section class="wheel-block">
+      <div class="wheel-wrap">
+        <div class="pointer"></div>
+        <canvas id="wheel" width="400" height="400"></canvas>
+      </div>
+      <button id="spinBtn" class="spin-btn">Крутить!</button>
+      <label class="checkbox">
+        <input id="removeWinner" type="checkbox">
+        Удалять выпавший сектор
+      </label>
+    </section>
+
+    <!-- Панель управления -->
+    <section id="panel" class="panel">
+      <h2>Секторы</h2>
+      <form id="addForm" class="add-form">
+        <input id="sectorInput" type="text" placeholder="Новый вариант" maxlength="20">
+        <button type="submit">Добавить</button>
+      </form>
+      <p id="error" class="error" role="alert"></p>
+
+      <div class="sector-head">
+        <span>Цвет</span><span>Название</span><span>Вес</span><span>Шанс</span><span></span>
+      </div>
+      <ul id="sectorList" class="sector-list"></ul>
+
+      <div class="panel-title">
+        <h2>Статистика</h2>
+        <button id="clearBtn" type="button" class="link-btn">Очистить</button>
+      </div>
+      <table class="stats">
+        <thead>
+          <tr><th>Сектор</th><th>Раз</th><th></th></tr>
+        </thead>
+        <tbody id="statsBody"></tbody>
+      </table>
+
+      <h2>История</h2>
+      <ol id="historyList" class="history-list"></ol>
+    </section>
+  </main>
+
+  <!-- Окно с результатом -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h2 id="modalTitle">🎉 Поздравляем!</h2>
+      <p id="modalText" class="modal-text"></p>
+      <button id="modalOk" class="spin-btn">OK</button>
+    </div>
+  </div>
+
+  <canvas id="confetti" class="confetti"></canvas>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

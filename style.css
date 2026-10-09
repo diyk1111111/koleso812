@@ -1,0 +1,310 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* ---------- Колесо ---------- */
+.wheel-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wheel-wrap {
+  position: relative;
+  max-width: 100%;
+}
+
+#wheel {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Указатель сверху колеса */
+.pointer {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 36px solid #ff3b3b;
+  z-index: 1;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+}
+
+.spin-btn {
+  margin-top: 20px;
+  padding: 14px 50px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  background: #ff9800;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.spin-btn:hover:not(:disabled) {
+  background: #ffa726;
+  transform: scale(1.05);
+}
+
+.spin-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+.checkbox {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* ---------- Панель ---------- */
+.panel {
+  width: 400px;
+  max-width: 100%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.panel-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-form {
+  display: flex;
+  gap: 8px;
+}
+
+.add-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.add-form button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #4caf50;
+  color: #fff;
+}
+
+button:disabled,
+input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #ffcdd2;
+  min-height: 20px;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+/* Список секторов: шапка и строки — одна сетка */
+.sector-head,
+.sector-list li {
+  display: grid;
+  grid-template-columns: 36px 1fr 58px 52px 32px;
+  align-items: center;
+  gap: 8px;
+}
+
+.sector-head {
+  font-size: 13px;
+  opacity: 0.7;
+  padding-bottom: 4px;
+}
+
+.sector-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.sector-list li {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sector-list .color {
+  width: 36px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.sector-list .name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sector-list .weight {
+  width: 100%;
+  padding: 4px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.sector-list .chance {
+  font-size: 14px;
+  text-align: right;
+}
+
+.sector-list .remove {
+  padding: 4px 0;
+  border: none;
+  border-radius: 6px;
+  background: #e53935;
+  color: #fff;
+  cursor: pointer;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #ffcc80;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* Статистика */
+.stats {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.stats th,
+.stats td {
+  text-align: left;
+  padding: 4px 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.stats .count {
+  width: 40px;
+}
+
+.stats .bar-cell {
+  width: 45%;
+}
+
+.stats .bar {
+  height: 10px;
+  border-radius: 5px;
+  background: #ff9800;
+}
+
+.stats .empty {
+  opacity: 0.7;
+  text-align: center;
+}
+
+.history-list {
+  margin: 0;
+  padding-left: 22px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+/* ---------- Модальное окно ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+/* Без этого display: flex перебивает атрибут hidden */
+.modal[hidden] {
+  display: none;
+}
+
+.modal-box {
+  width: 360px;
+  max-width: 100%;
+  padding: 30px 20px;
+  text-align: center;
+  color: #222;
+  background: #fff;
+  border-radius: 16px;
+  animation: pop 0.3s ease-out;
+}
+
+.modal-text {
+  font-size: 20px;
+}
+
+.modal-box .spin-btn {
+  margin-top: 5px;
+}
+
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Конфетти поверх всего, но не мешает кликам */
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "wheel-of-fortune",
+  "version": "1.0.0",
+  "description": "Колесо фортуны на JavaScript (учебная практика)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes serve .",
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage"
+  }
+}
